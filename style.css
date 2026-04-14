@@ -149,6 +149,13 @@ a {
     pointer-events: none;
 }
 
+#donutCanvas {
+    position: absolute; top: 50%; right: 5%; transform: translateY(-50%);
+    width: 640px; height: 600px;
+    z-index: 0; pointer-events: none; opacity: 0.15;
+}
+.hero-container { position: relative; z-index: 10; width: 100%; }
+
 .hero-greeting {
     font-size: 1.2rem;
     color: var(--text-muted);
@@ -378,6 +385,8 @@ a {
 .stack-card:nth-child(1) { top: 12vh; z-index: 10; transform: scale(1); }
 .stack-card:nth-child(2) { top: 15vh; z-index: 20; }
 .stack-card:nth-child(3) { top: 18vh; z-index: 30; }
+.stack-card:nth-child(4) { top: 21vh; z-index: 40; }
+.stack-card:nth-child(5) { top: 24vh; z-index: 50; }
 
 .stack-img-wrapper {
     flex: 1; position: relative; overflow: hidden;
@@ -406,6 +415,54 @@ a {
 .proj-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
 .flex-header { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 .tech-badges { font-family: 'Space Grotesk'; font-size: 0.85rem; border: 1px solid var(--border-color); padding: 0.3rem 0.8rem; border-radius: 20px;}
+
+/* App Gallery Layout */
+.app-gallery-section { padding: 50px 5% 150px; }
+.app-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+.app-card {
+    border-radius: 36px; padding: 4rem; position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: flex-start;
+    min-height: 550px; border: 1px solid var(--border-color);
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.05), transparent 60%), rgba(10,10,12,0.6);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+.app-card:hover { transform: translateY(-10px); border-color: rgba(255,255,255,0.2); }
+.app-content { position: relative; z-index: 2; }
+.app-badge {
+    display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1);
+    padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-family: 'Space Grotesk';
+    margin-bottom: 2rem; border: 1px solid var(--border-color);
+}
+.app-card h3 { font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.1; }
+.app-visual {
+    position: absolute; bottom: -15%; right: -10%; width: 60%; height: 60%;
+    display: flex; justify-content: flex-end; align-items: flex-end; pointer-events: none; z-index: 1;
+}
+.device-frame {
+    width: 70%; height: 120%; background: #000; border: 8px solid #333; border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8); position: relative; overflow: hidden;
+    transform: rotate(-15deg); transition: transform 0.5s ease;
+}
+.device-frame::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 40%; height: 20px; background: #333; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; z-index: 10;
+}
+.app-card:hover .device-frame { transform: rotate(0deg) translateY(-20px); }
+.device-glass {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%); pointer-events: none;
+}
+
+.tablet-frame {
+    width: 120%; height: 80%; background: #000; border: 2px solid #333; border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8); position: relative; overflow: hidden;
+    transform: rotate(-5deg) translateY(20px); transition: transform 0.5s ease;
+}
+.app-card:hover .tablet-frame { transform: rotate(0deg) translateY(0); }
+
+.app-title { max-width: 60%; }
+.app-desc { max-width: 45%; font-size: 1rem; }
 
 /* Contact Section */
 .contact-section { padding: 200px 5%; }
@@ -441,6 +498,23 @@ a {
     .img-overlay { background: linear-gradient(to top, rgba(3,3,3,0.9), transparent); }
     .stack-content { flex: 0.6; padding: 2rem; }
     .stack-card.text-only .stack-content { padding: 3rem 2rem; }
+    
+    #donutCanvas { right: -20%; opacity: 0.1; }
+    .app-grid { grid-template-columns: 1fr; }
+    .app-card { min-height: auto; padding: 3rem 2rem 0 2rem; }
+    .app-visual { 
+        position: relative; width: 100%; height: 260px; 
+        bottom: auto; right: auto; margin-top: 2rem; 
+        justify-content: center; opacity: 1; 
+    }
+    .device-frame, .tablet-frame {
+        width: 70%; height: 100%;
+        transform: rotate(0) translateY(20px) !important;
+    }
+    .app-card:hover .device-frame, .app-card:hover .tablet-frame {
+        transform: rotate(0) translateY(0) !important;
+    }
+    .app-title, .app-desc { max-width: 100%; }
 }
 
 @media(max-width: 600px) {
