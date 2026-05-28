@@ -464,6 +464,17 @@ a {
 .app-title { max-width: 60%; }
 .app-desc { max-width: 45%; font-size: 1rem; }
 
+/* Wide showcase card */
+.app-card.wide {
+    grid-column: span 2;
+}
+.app-card.wide .app-title {
+    max-width: 80%;
+}
+.app-card.wide .app-desc {
+    max-width: 55%;
+}
+
 /* Contact Section */
 .contact-section { padding: 200px 5%; }
 .mega-title { font-size: clamp(4rem, 10vw, 10rem); line-height: 1; margin-bottom: 1rem; }
@@ -502,6 +513,7 @@ a {
     #donutCanvas { right: -20%; opacity: 0.1; }
     .app-grid { grid-template-columns: 1fr; }
     .app-card { min-height: auto; padding: 3rem 2rem 0 2rem; }
+    .app-card.wide { grid-column: span 1; }
     .app-visual { 
         position: relative; width: 100%; height: 260px; 
         bottom: auto; right: auto; margin-top: 2rem; 
