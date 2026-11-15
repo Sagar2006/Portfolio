@@ -548,4 +548,23 @@ a {
     .cursor, .cursor-follower { display: none; } /* Disable custom cursor on mobile */
     * { cursor: auto; }
     .nav-links { display: none; }
+
+    .contact-actions {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .contact-actions .primary-btn.large {
+        width: 100%;
+        max-width: 100%;
+        padding: 1rem;
+        font-size: clamp(0.9rem, 4vw, 1.05rem);
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .contact-actions .btn-text {
+        min-width: 0;
+    }
 }
